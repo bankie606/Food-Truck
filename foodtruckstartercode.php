@@ -48,9 +48,10 @@ class Item
         
     }#end Item constructor
     
+    #adds extra's item and price
     public function addExtra($extra)
     {
-        $this->Extras[] = $extra => 0.25;
+        $this->Extras[$extra] = 0.25;
         
     }#end addExtra()
 
