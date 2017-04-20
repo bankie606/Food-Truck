@@ -50,7 +50,7 @@ class Item
     
     public function addExtra($extra)
     {
-        $this->Extras[] = $extra;
+        $this->Extras[] = $extra => 0.25;
         
     }#end addExtra()
 
