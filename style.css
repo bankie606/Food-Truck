@@ -1,0 +1,145 @@
+body{
+width:80%;
+margin: auto;
+float:none;    
+}
+
+div#header{
+height: 100px;
+}
+
+.content{
+float:none;
+margin:auto;
+padding-bottom: 100px;
+text-align: center;    
+}
+
+ul#menu{
+    list-style:none;
+    margin: auto;
+    display: inline-flex;
+    position:relative;
+    padding: 1%;
+    height: auto!important;
+    overflow: visible!important;
+    background-color: grey;
+    border-bottom: 4px solid #032;
+    text-decoration: none;
+    text-align: center;    
+
+}
+
+ul#menu li a{
+    margin: 6px 0 0 10px;
+    padding: 10px 15px 10px 15px;
+    color:antiquewhite;
+    text-shadow: 1px 1px 1px #020, 2px 2px 3px #000, 1px 2px 1px #fff;
+    text-decoration: overline;
+
+}
+
+a #menu {
+text-shadow: 1px 1px 1px #0f0, 2px 2px 3px #000, 1px 2px 1px #fff;
+}
+
+ul#menu: hover {
+    text-decoration: line-through;
+}
+
+.mainbody{
+float:none;
+margin:auto;
+    padding:20px;
+ color: #0000D8;
+  background: linear-gradient(to bottom,#505 42%, #CfCfCf 58%);
+  background-size: auto 1px;
+}
+
+.animateme {
+margin:auto 0;    
+color: black;
+padding: 1%;
+text-shadow: 1px 1px 1px #fff, 1px 2px 2px #000;
+background-size: auto 12px;
+outline: 10px dashed #000;
+box-shadow: 10 10 10 10px #C0C0C0;
+z-index: -3;
+}
+
+
+
+
+.highlightanim{
+display: inline-block;    
+margin: auto 0;
+float: none;    
+transition: .6s background, 1s;
+width: 25%;    
+}
+
+
+.highlightanim:hover{
+background: linear-gradient(to bottom,#808 2%, #ac1d69 4%, #f33769 24%, #C0C0C0 8%);    
+background-size: auto 7px;
+opacity: 100;
+font-size:1.2em;
+width:25%;
+animation: 1s animateBorderThree ease infinite;       
+}
+
+@keyframes animateBorderThree {
+  to {
+    background: linear-gradient(to bottom,#808 12%, #ac1d69 54%, #f33769 4%, #C0C0C0 2%);    
+    background-size: auto 2px;
+    z-index: -3;
+  }
+}
+
+
+
+.footer{
+margin:auto 0;
+padding-top: 10px;    
+text-align: center;      
+width:100%;
+border: 2px solid #0000D8;
+z-index: 100px;
+    
+}
+
+
+/* Responsive TABLET LAYOUT  */
+           @media all and (max-width:780px) {
+            body {
+                    width:60%;
+            }
+    }
+ /* Responsive PHONE LAYOUT  */
+           @media all and (max-width:480px) {
+            body {
+                    width:80%;
+            }
+           
+               div#header{
+               width:50%;
+               }
+               
+            ul#menu{
+    list-style:none;
+    margin: auto;
+    display: inline-block;
+    position:relative;
+    padding: 12%;
+    height: auto!important;
+    overflow: visible!important;
+    background-color: grey;
+    border-bottom: 4px solid #032;
+    text-decoration: none;
+    text-align: center;    
+
+}   
+               
+    }
+
+
