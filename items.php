@@ -1,7 +1,5 @@
 <?php
-//foodtruck.php
-
-//include 'index.php';
+//items.php
 
 $myItem = new Item(1,"Taco","Our Tacos are awesome!",4.95);
 $myItem->addExtra("Sour Cream");
