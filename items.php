@@ -17,10 +17,10 @@ $myItem = new Item(3,"Salad","Our Salads are awesome!",5.95);
 $myItem->addExtra("Croutons");
 $myItem->addExtra("Bacon");
 $myItem->addExtra("Lemon Wedges");
-$myItem->addExtra("Avacado");
+$myItem->addExtra("Avocado");
 $items[] = $myItem;
 
-$myItem = new Item(2, "Pizza", "Our pizzas are yummy!", 12.99);
+$myItem = new Item(4, "Pizza", "Our pizzas are yummy!", 12.99);
 $myItem->addExtra("Cheese");
 $myItem->addExtra("Sausage");
 $myItem->addExtra("Pepperoni");
@@ -52,10 +52,29 @@ class Item
     public function addExtra($extra)
     {
         //$this->Extras[$extra] = 0.25;
+        //global $extras;
         $this->Extras[] = $extra;
+        /*foreach ($extras as $extra)
+        {
+            //if ($extra)
+        }*/
 
     }#end addExtra()
 
 }#end Item class
 
-include 'item-forms.php';
+function getItem($id)
+{
+    global $items;
+    
+    foreach ($items as $item) 
+    {
+        if ($item->ID == $id) 
+        {
+            return $item;
+        }
+    }
+    
+    return null;
+}
+
