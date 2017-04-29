@@ -25,7 +25,7 @@ function showForm()
     foreach ($items as $item) {
         //create a text input in the form for each item.
         //name attribute is "item_[item->ID]"
-        echo '<p>' .$item->Name . ' <input type="text" name="item_' . $item->ID . '" /></p><p>';
+        echo '<p>' .$item->Name . ' <input type="number" name="item_' . $item->ID . '" /></p><p>';
         $extraCounter = 0;
         foreach ($item->Extras as $extra) {
             //create a checkbox for each extra under the current item.
@@ -78,8 +78,9 @@ function showData()
 			*/
 			
             $quant = (int)$value;
-            $total = $quant * $item->Price;
-            echo "<p>You ordered $quant {$item->Name}. Total is $total.</p>";
+            $total = number_format($quant * $item->Price, 2);
+            setlocale(LC_MONETARY, 'en_US');
+            echo "<p>You ordered $quant {$item->Name} . Total is $ $total.</p>";
              
         }
         if(substr($name,0,6)=='extra_')
