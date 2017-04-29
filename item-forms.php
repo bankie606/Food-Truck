@@ -25,7 +25,7 @@ function showForm()
     foreach ($items as $item) {
         //create a text input in the form for each item.
         //name attribute is "item_[item->ID]"
-        echo '<p>' .$item->Name . ' <input type="number" name="item_' . $item->ID . '" /></p><p>';
+        echo '<p>' .$item->Name . ' <input type="number" min="0" name="item_'  . $item->ID . '" /></p><p>';
         $extraCounter = 0;
         foreach ($item->Extras as $extra) {
             //create a checkbox for each extra under the current item.
