@@ -48,6 +48,8 @@ function showForm()
 
 function showData()
 {
+    $total = 0.00;
+    
     foreach($_POST as $name => $value)
     {//loop the form elements
         
@@ -78,12 +80,12 @@ function showData()
 			*/
 			
             $quant = (int)$value;
-            $total = number_format($quant * $item->Price, 2);
-            setlocale(LC_MONETARY, 'en_US');
-            echo "<p>You ordered $quant {$item->Name} . Total is $ $total.</p>";
+            $total += number_format($quant * $item->Price, 2);
+            
+            echo "<p>You ordered $quant {$item->Name}.</p>";
              
         }
-        if(substr($name,0,6)=='extra_')
+        else if(substr($name,0,6)=='extra_')
         {
             //explode the string into an array on the "_"
             $name_array = explode('_',$name);
@@ -95,6 +97,8 @@ function showData()
             //$extras = addExtras($extra);
             $extra = $item->Extras[$extraId];
 			$tops = (int)$value;
+            //add the price of extra to the current item total
+            $total += $item->ExtraPrice;
             
             echo "<p>With $extra.</p>";
             /*
@@ -114,8 +118,11 @@ function showData()
             
              
         }
-        
+     
     }
+        setlocale(LC_MONETARY, 'en_US');
+        $total = number_format($total, 2);
+       echo "<p>Total is $ $total.</p>";
     //var_dump($_REQUEST);
     //"item_<id>" -> quantidade
     //"extra_id-index" -> sim ou nao

@@ -1,26 +1,26 @@
 <?php
 //items.php
 
-$myItem = new Item(1,"Taco","Our Tacos are awesome!",4.95);
+$myItem = new Item(1,"Taco","Our Tacos are awesome!",4.95, 0.75);
 $myItem->addExtra("Sour Cream");
 $myItem->addExtra("Cheese");
 $myItem->addExtra("Guacamole");
 $items[] = $myItem;
 
-$myItem = new Item(2,"Sundae","Our Sundaes are awesome!",3.95);
+$myItem = new Item(2,"Sundae","Our Sundaes are awesome!",3.95, 0.75);
 $myItem->addExtra("Sprinkles");
 $myItem->addExtra("Chocolate Sauce");
 $myItem->addExtra("Nuts");
 $items[] = $myItem;
 
-$myItem = new Item(3,"Salad","Our Salads are awesome!",5.95);
+$myItem = new Item(3,"Salad","Our Salads are awesome!",5.95, 0.75);
 $myItem->addExtra("Croutons");
 $myItem->addExtra("Bacon");
 $myItem->addExtra("Lemon Wedges");
 $myItem->addExtra("Avocado");
 $items[] = $myItem;
 
-$myItem = new Item(4, "Pizza", "Our pizzas are yummy!", 12.99);
+$myItem = new Item(4, "Pizza", "Our pizzas are yummy!", 12.99, 0.75);
 $myItem->addExtra("Cheese");
 $myItem->addExtra("Sausage");
 $myItem->addExtra("Pepperoni");
@@ -38,14 +38,16 @@ class Item
     public $Description = "";
     public $Price = 0;
     public $Extras = array();
+    public $ExtraPrice = 0.75;
 
-    public function __construct($id, $name, $description, $price)
+    public function __construct($id, $name, $description, $price, $ExtraPrice)
     {
         $this->ID = (int)$id;
         $this->Name = $name;
         $this->Description = $description;
         $this->Price = (float)$price;
-
+        $this->ExtraPrice =(float)$ExtraPrice;
+        
     }#end Item constructor
 
     #adds extra's item and price
@@ -54,6 +56,7 @@ class Item
         //$this->Extras[$extra] = 0.25;
         //global $extras;
         $this->Extras[] = $extra;
+        
         /*foreach ($extras as $extra)
         {
             //if ($extra)
