@@ -25,7 +25,8 @@ function showForm()
     foreach ($items as $item) {
         //create a text input in the form for each item.
         //name attribute is "item_[item->ID]"
-        echo '<p>' .$item->Name . ' <input type="number" min="0" name="item_'  . $item->ID . '" /></p><p>';
+        echo '<p>' .$item->Name . ' <input type="number" min="0" name="item_'  . $item->ID . '" /></p><b>ITEM PRICE: $'.$item->Price .' </b> EXTRAS PRICE: $'.$item->ExtraPrice .'<p>';
+
         $extraCounter = 0;
         foreach ($item->Extras as $extra) {
             //create a checkbox for each extra under the current item.
@@ -80,8 +81,7 @@ function showData()
 			*/
 			
             $quant = (int)$value;
-            $total += number_format($quant * $item->Price, 2);
-            
+            $total += $quant * $item->Price;
             echo "<p>You ordered $quant {$item->Name}.</p>";
              
         }
@@ -121,17 +121,16 @@ function showData()
      
     } 
     //adding tax and formatting number to decimal spots
-    $tax = number_format($total * 0.10, 2);
-    
-    $total = number_format($total, 2);
-    echo "Sub total is $$total <br>";
+    $tax = $total * 0.10;
+    setlocale(LC_MONETARY, 'en_US');
+    $total = $total;
+    echo "Sub total is $". number_format($total, 2)." <br>";
     
     
     $total += $tax;
-    
-    $total = number_format($total, 2);
-    echo "Total tax is $$tax";
-    echo "<p>Total is $$total.</p>";
+    $total = $total;
+    echo "Total tax is $". number_format($tax, 2).".<br>";
+    echo "<p>Total is $". number_format($total, 2).".</p>";
     
     echo "";
     //var_dump($_REQUEST);
@@ -141,7 +140,6 @@ function showData()
     
     //echo '<p>show data here</p>';
 }
-
 function showHeader()
 {
     include 'header_inc.php';#defaults to header_inc.php

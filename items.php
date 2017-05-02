@@ -2,13 +2,13 @@
 //items.php
 $taxRate = 0.10;
 
-$myItem = new Item(1,"Taco","Our Tacos are awesome!",4.95, 0.75);
+$myItem = new Item(1,"Taco","Our Tacos are awesome!",1.95, 0.25);
 $myItem->addExtra("Sour Cream");
 $myItem->addExtra("Cheese");
 $myItem->addExtra("Guacamole");
 $items[] = $myItem;
 
-$myItem = new Item(2,"Sundae","Our Sundaes are awesome!",3.95, 0.75);
+$myItem = new Item(2,"Sundae","Our Sundaes are awesome!",3.95, 0.50);
 $myItem->addExtra("Sprinkles");
 $myItem->addExtra("Chocolate Sauce");
 $myItem->addExtra("Nuts");
@@ -46,8 +46,8 @@ class Item
         $this->ID = (int)$id;
         $this->Name = $name;
         $this->Description = $description;
-        $this->Price = (float)$price;
-        $this->ExtraPrice =(float)$ExtraPrice;
+        $this->Price = number_format($price, 2);
+        $this->ExtraPrice =number_format($ExtraPrice, 2);
         
     }#end Item constructor
 
