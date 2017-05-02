@@ -1,7 +1,8 @@
 <?php    
     //dynamic copyright  
     date_default_timezone_set('America/Los_Angeles');
-    $yearofoperation = date("Y");
+    global $yearofoperation;
+    $yearofoperation = date('Y');
     ?>
 <!DOCTYPE html>
 <html>

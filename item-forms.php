@@ -119,10 +119,21 @@ function showData()
              
         }
      
-    }
-        setlocale(LC_MONETARY, 'en_US');
-        $total = number_format($total, 2);
-       echo "<p>Total is $ $total.</p>";
+    } 
+    //adding tax and formatting number to decimal spots
+    $tax = number_format($total * 0.10, 2);
+    
+    $total = number_format($total, 2);
+    echo "Sub total is $$total <br>";
+    
+    
+    $total += $tax;
+    
+    $total = number_format($total, 2);
+    echo "Total tax is $$tax";
+    echo "<p>Total is $$total.</p>";
+    
+    echo "";
     //var_dump($_REQUEST);
     //"item_<id>" -> quantidade
     //"extra_id-index" -> sim ou nao

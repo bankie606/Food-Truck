@@ -1,5 +1,6 @@
 <?php
 //items.php
+$taxRate = 0.10;
 
 $myItem = new Item(1,"Taco","Our Tacos are awesome!",4.95, 0.75);
 $myItem->addExtra("Sour Cream");
