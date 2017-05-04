@@ -28,9 +28,6 @@ $myItem->addExtra("Pepperoni");
 $myItem->addExtra("Olives");
 $items[] = $myItem;
 
-// echo '<pre>';
-// var_dump($items);
-// echo '</pre>';
 
 class Item
 {
@@ -47,22 +44,13 @@ class Item
         $this->Name = $name;
         $this->Description = $description;
         $this->Price = number_format($price, 2);
-        $this->ExtraPrice =number_format($ExtraPrice, 2);
-        
+        $this->ExtraPrice =number_format($ExtraPrice, 2);    
     }#end Item constructor
 
     #adds extra's item and price
     public function addExtra($extra)
     {
-        //$this->Extras[$extra] = 0.25;
-        //global $extras;
         $this->Extras[] = $extra;
-        
-        /*foreach ($extras as $extra)
-        {
-            //if ($extra)
-        }*/
-
     }#end addExtra()
 
 }#end Item class
