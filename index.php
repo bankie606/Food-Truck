@@ -79,6 +79,8 @@ function showForm()
 function showData()
 {
     $total = 0.00;
+    $itemSelected = false;
+    $totalItemsOrdered = 0;
 
     foreach($_POST as $name => $value)
     {//loop the form elements
@@ -96,7 +98,9 @@ function showData()
             //$extras = addExtras($extra);
 
             $quant = (int)$value;
+            $totalItemsOrdered += $quant;
             $total += $quant * $item->Price;
+            $itemSelected = true;
             echo "<p>You ordered $quant {$item->Name}.</p>";
 
         }
@@ -105,13 +109,13 @@ function showData()
             //explode the string into an array on the "_"
             $name_array = explode('_',$name);
             //id is the second element of the array
-	    //forcibly cast to an int in the process
+	        //forcibly cast to an int in the process
             $id = (int)$name_array[1];
             $extraId = (int)$name_array[2];
             $item = getItem($id);
             //$extras = addExtras($extra);
             $extra = $item->Extras[$extraId];
-	    $tops = (int)$value;
+	        $tops = (int)$value;
             //add the price of extra to the current item total
             $total += $item->ExtraPrice;
 
@@ -120,16 +124,20 @@ function showData()
 
     }
     //adding tax and formatting number to decimal spots
-    $tax = $total * 0.10;
-    setlocale(LC_MONETARY, 'en_US');
-    $total = $total;
-    echo "Sub total is $". number_format($total, 2)." <br>";
+    if ($totalItemsOrdered > 0) {
+        $tax = $total * 0.10;
+        setlocale(LC_MONETARY, 'en_US');
+        $total = $total;
+        echo "Sub total is $". number_format($total, 2)." <br>";
 
 
-    $total += $tax;
-    $total = $total;
-    echo "Total tax is $". number_format($tax, 2).".<br>";
-    echo "<p>Total is $". number_format($total, 2).".</p>";
+        $total += $tax;
+        $total = $total;
+        echo "Total tax is $". number_format($tax, 2).".<br>";
+        echo "<p>Total is $". number_format($total, 2).".</p>";
+    } else {
+        echo "You didn't order any items!"
+    }
 
     echo "";
 }

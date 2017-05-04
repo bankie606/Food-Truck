@@ -44,11 +44,14 @@ $myItem->addExtra("Pepperoni");
 $myItem->addExtra("Olives");
 $items[] = $myItem;
 
+<<<<<<< HEAD
 /**
 * Item class is used to construct and manipulate "Items" objects, which are menu items that are for sale.
 *
 * @todo none
 */
+=======
+>>>>>>> origin/master
 
 class Item
 {
@@ -78,8 +81,12 @@ class Item
         $this->Name = $name;
         $this->Description = $description;
         $this->Price = number_format($price, 2);
+<<<<<<< HEAD
         $this->ExtraPrice =number_format($ExtraPrice, 2);
 
+=======
+        $this->ExtraPrice =number_format($ExtraPrice, 2);    
+>>>>>>> origin/master
     }#end Item constructor
 
      /**
