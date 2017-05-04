@@ -82,6 +82,8 @@ function showData()
     $itemSelected = false;
     $totalItemsOrdered = 0;
 
+    $order = array();
+
     foreach($_POST as $name => $value)
     {//loop the form elements
 
@@ -98,9 +100,18 @@ function showData()
             //$extras = addExtras($extra);
 
             $quant = (int)$value;
-            $totalItemsOrdered += $quant;
-            $total += $quant * $item->Price;
-            echo "<p>You ordered $quant {$item->Name}.</p>";
+            if ($quant > 0)
+            {
+                $order[$id] = array(
+                    "item" => $item->Name,
+                    "quant" => $quant,
+                    "price" => $item->Price,
+                    "extras" => array()
+                );
+                $total += $quant * $item->Price;
+                echo "<p>You ordered $quant {$item->Name}.</p>";
+            }
+
 
         }
         else if(substr($name,0,6)=='extra_')
@@ -112,18 +123,20 @@ function showData()
             $id = (int)$name_array[1];
             $extraId = (int)$name_array[2];
             $item = getItem($id);
-            //$extras = addExtras($extra);
-            $extra = $item->Extras[$extraId];
-	        $tops = (int)$value;
-            //add the price of extra to the current item total
-            $total += $item->ExtraPrice;
 
-            echo "<p>With $extra.</p>";
+            if ($order[$id]["quant"] > 0)
+            {
+                $extra = $item->Extras[$extraId];
+    	        $tops = (int)$value;
+                //add the price of extra to the current item total
+                $total += $item->ExtraPrice;
+                echo "<p>With $extra.</p>";
+            }
         }
 
     }
     //adding tax and formatting number to decimal spots
-    if ($totalItemsOrdered > 0) {
+    if (!empty($order)) {
         $tax = $total * 0.10;
         setlocale(LC_MONETARY, 'en_US');
         $total = $total;
