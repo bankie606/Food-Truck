@@ -1,5 +1,5 @@
 <?php
-//item-forms.php
+//index.php
 include 'items.php';
 
 if (isset($_REQUEST['action']))
@@ -21,7 +21,7 @@ showFooter();
 function showForm()
 {
     global $items;
-    echo '<form action="item-forms.php" method="post">';
+    echo '<form action="index.php" method="post">';
     foreach ($items as $item) {
         //create a text input in the form for each item.
         //name attribute is "item_[item->ID]"
@@ -60,25 +60,11 @@ function showData()
             //explode the string into an array on the "_"
             $name_array = explode('_',$name);
             //id is the second element of the array
-			//forcibly cast to an int in the process
+	    //forcibly cast to an int in the process
             $id = (int)$name_array[1];
 
             $item = getItem($id);
             //$extras = addExtras($extra);
-            
-			/*
-				Here is where you'll do most of your work
-				Use $id to loop your array of items and return 
-				item data such as price.
-				
-				Consider creating a function to return a specific item 
-				from your items array, for example:
-				
-				$thisItem = getItem($id);
-				
-				Use $value to determine the number of items ordered 
-				and create subtotals, etc.
-			*/
 			
             $quant = (int)$value;
             $total += $quant * $item->Price;
@@ -90,33 +76,17 @@ function showData()
             //explode the string into an array on the "_"
             $name_array = explode('_',$name);
             //id is the second element of the array
-			//forcibly cast to an int in the process
+	    //forcibly cast to an int in the process
             $id = (int)$name_array[1];
-             $extraId = (int)$name_array[2];
+            $extraId = (int)$name_array[2];
             $item = getItem($id);
             //$extras = addExtras($extra);
             $extra = $item->Extras[$extraId];
-			$tops = (int)$value;
+	    $tops = (int)$value;
             //add the price of extra to the current item total
             $total += $item->ExtraPrice;
             
             echo "<p>With $extra.</p>";
-            /*
-				Here is where you'll do most of your work
-				Use $id to loop your array of items and return 
-				item data such as price.
-				
-				Consider creating a function to return a specific item 
-				from your items array, for example:
-				
-				$thisItem = getItem($id);
-				
-				Use $value to determine the number of items ordered 
-				and create subtotals, etc.
-			
-			*/
-            
-             
         }
      
     } 
@@ -133,12 +103,6 @@ function showData()
     echo "<p>Total is $". number_format($total, 2).".</p>";
     
     echo "";
-    //var_dump($_REQUEST);
-    //"item_<id>" -> quantidade
-    //"extra_id-index" -> sim ou nao
-    // quais os ids dos items pedidos, e quanto de cada
-    
-    //echo '<p>show data here</p>';
 }
 function showHeader()
 {
