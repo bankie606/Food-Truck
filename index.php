@@ -100,7 +100,6 @@ function showData()
             $quant = (int)$value;
             $totalItemsOrdered += $quant;
             $total += $quant * $item->Price;
-            $itemSelected = true;
             echo "<p>You ordered $quant {$item->Name}.</p>";
 
         }
@@ -136,7 +135,7 @@ function showData()
         echo "Total tax is $". number_format($tax, 2).".<br>";
         echo "<p>Total is $". number_format($total, 2).".</p>";
     } else {
-        echo "You didn't order any items!"
+        echo "You didn't order any items!";
     }
 
     echo "";
