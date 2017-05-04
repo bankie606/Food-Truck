@@ -109,7 +109,7 @@ function showData()
                     "extras" => array()
                 );
                 $total += $quant * $item->Price;
-                echo "<p>You ordered $quant {$item->Name}.</p>";
+                echo "<p>You ordered $quant {$item->Name}(s).</p>";
             }
 
 
